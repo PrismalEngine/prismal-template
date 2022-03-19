@@ -47,7 +47,7 @@ impl AppEvents for {{app_code_name}}App {
 
 impl AppFactory for {{app_code_name}}App {
     fn make_app() -> Box<Self> {
-        // Construct an `{{app_code_name}}App` on the heap
+        // Construct an instance of `{{app_code_name}}App` on the heap
         Box::new(Self {
             utils: AppUtilities::new(),
 
