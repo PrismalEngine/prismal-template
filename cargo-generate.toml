@@ -7,7 +7,7 @@ regex = "^([A-Z][a-z0-9_]*)+$"
 type = "string"
 prompt = "Application name for display to the user?"
 
-[placeholders.app_publisher_name]
+[placeholders.publisher_display_name]
 type = "string"
 prompt = "Application publisher name for display to the user?"
 default = ""
