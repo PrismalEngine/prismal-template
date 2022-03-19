@@ -1,13 +1,15 @@
 use prismal::prelude::*;
-struct {{app_name}} {
+
+struct {{app_code_name}}App {
+    // This is required to implement `AppCore`
     utils: Box<AppUtilities>,
 }
 
-impl AppCore for {{app_name}} {
+impl AppCore for {{app_code_name}}App {
     fn info(&self) -> AppInfo {
         AppInfo {
-            name: "Sample App".into(),
-            publisher: "Sample Publisher".into(),
+            name: "{{app_display_name}}".into(),
+            publisher: "{{app_publisher_name}}".into(),
             version: Version(0, 1, 0, 0),
         }
     }
@@ -21,7 +23,7 @@ impl AppCore for {{app_name}} {
     }
 }
 
-impl AppEvents for {{app_name}} {
+impl AppEvents for {{app_code_name}}App {
     fn start(&mut self) -> Result<(), AppError> {
         Ok(())
     }
@@ -35,7 +37,7 @@ impl AppEvents for {{app_name}} {
     }
 }
 
-impl AppFactory for {{app_name}} {
+impl AppFactory for {{app_code_name}}App {
     fn make_app() -> Box<Self> {
         Box::new(Self {
             utils: AppUtilities::new()
@@ -43,12 +45,15 @@ impl AppFactory for {{app_name}} {
     }
 }
 
-impl AppECS for {{app_name}} {
+impl AppECS for {{app_code_name}}App {
     fn extra_initializers() -> Vec<Box<dyn ECSInitializer>> {
+        // TODO: Add custom `ECSInitializer` structs to the `Vec` below!
         vec![]
     }
 }
 
+// The `main` function should always look like this!
 fn main() {
-    entry::<{{app_name}}>();
+    entry::<{{app_code_name}}App>();
+    // Anything after `entry` will not get run!
 }
